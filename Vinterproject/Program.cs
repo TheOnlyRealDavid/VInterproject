@@ -34,9 +34,38 @@ while (heroName.Length > 10)
     heroName = Console.ReadLine();
 }
 
-Console.WriteLine($"Vilket fint namn {heroName}");
+Console.WriteLine($"Vilket fint namn {heroName}, tryck el valfri kanpp för att gå vidare");
 Console.ReadLine();
 Console.Clear();
 
 
 //Beslutagande
+Console.WriteLine("Vilken svårhetsgrad(1 eller 2)?");
+Console.WriteLine("1.Normal");
+Console.WriteLine("2.Hardcore");
+string svårhetsgrad = Console.ReadLine();
+int.TryParse(svårhetsgrad, out int speläge);
+Console.Clear();
+
+while(speläge != 1 && speläge !=2)
+{
+    Console.WriteLine("Välj din svårhets grad (skriv 1 eller 2)");
+    Console.WriteLine("1.Normal");
+    Console.WriteLine("2.Hardcore");
+    svårhetsgrad = Console.ReadLine();
+    int.TryParse(svårhetsgrad, out speläge);
+    Console.Clear();
+}
+
+int guld;
+
+if (speläge == 2)
+{
+    guld = 20;
+}
+
+else
+{
+    guld = 100;
+}
+
