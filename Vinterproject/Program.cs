@@ -28,12 +28,10 @@ Console.Clear();
 
 Console.WriteLine("Välkommen kära spelare, välj ditt namn på din kämpe (max 10 bokstäver)");
 string heroName = Console.ReadLine();
-bool success = int.TryParse(heroName, out int name);
-while (heroName.Length >= 10)
+while (heroName.Length > 10)
 {
     Console.WriteLine("Ditt namn får max vara 10 bokstäver");
     heroName = Console.ReadLine();
-    int.TryParse(heroName, out name);
 }
 
 Console.WriteLine($"Vilket fint namn {heroName}");
