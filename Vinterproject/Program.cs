@@ -1,9 +1,9 @@
 ﻿// Start
 // spelaren presenteras till spelet med en kortfattad förklaring om vad spelet är men en titel, kort historia, instruktioner.
 // Spelaren får välja sitt namn på sin karaktär
-// Spelaren får välja mellan normal eller hardcore mode (skillnaden är antalet guld spelaren börjar med)
 
 // Beslutstagande
+// Spelaren får välja mellan normal eller hardcore mode (skillnaden är antalet guld spelaren börjar med)
 // Spelaren presenteras i medeltidiksa smedja och från välja mellan att köpa 3 olika vapen
 // Spelaren får välja mellan 2 platser som hen vill börja vandra till
 
