@@ -19,6 +19,7 @@
 
 // Start
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 Console.WriteLine("[===--Elarion--===]");
 Console.WriteLine("--Det har varit ett brutalt inbördeskrig i Elarion, Där kung Alvareon Lysandrel blev avsatt tronen av rebelen Arthur Stark och straffad för sina gryma handlingar mot folket av Elarion--");
@@ -34,9 +35,12 @@ while (heroName.Length > 10)
     heroName = Console.ReadLine();
 }
 
-Console.WriteLine($"Vilket fint namn {heroName}, tryck el valfri kanpp för att gå vidare");
+Console.WriteLine($"Vilket fint namn {heroName}, tryck en valfri kanpp för att gå vidare");
 Console.ReadLine();
 Console.Clear();
+
+
+
 
 
 //Beslutagande
@@ -69,6 +73,10 @@ else
     guld = 100;
 }
 
+
+
+
+
 Console.WriteLine($"Tjenare {heroName} välkomen till min smedja, Mitt namn är Robert, Perfekt att du kom när du kom, Jag har precis tillverkad tre nya vapen vilket du kan få köpa (Skriv siffran på vapnet du vill köpa) ");
 Console.WriteLine("1. Svärd");
 Console.WriteLine("2. Yxa");
@@ -90,22 +98,62 @@ while (valdaVapen != 1 && valdaVapen !=2 && valdaVapen !=3)
 
 if (valdaVapen == 1)
 {
-    Console.WriteLine($"Fint val {heroName} ditt svärd kommer tjäna dig bra - Robert ");
+    Console.WriteLine($"Fint val {heroName} ditt svärd kommer tjäna dig bra på dina äventyr - Robert ");
     Console.ReadLine();
     Console.Clear();
 }
 
 else if (valdaVapen == 2)
 {
-    Console.WriteLine($"Fint val {heroName} din yxa kommer tjäna dig bra - Robert ");
+    Console.WriteLine($"Fint val {heroName} din yxa kommer tjäna dig bra på dina äventyr - Robert ");
     Console.ReadLine();
     Console.Clear();
 }
 
 else
 {
-    Console.WriteLine($"Fint val {heroName} din StridsHammare kommer tjäna dig bra - Robert ");
+    Console.WriteLine($"Fint val {heroName} din StridsHammare kommer tjäna dig bra på dina äventyr - Robert ");
     Console.ReadLine();
     Console.Clear();
 }
 
+
+
+
+
+Console.WriteLine($"Det finns äventyr att ta till dig, {heroName} - Robert");
+Console.WriteLine($"Jag har några ställen du kan börja din resa till- Robert (Skriv siffran på platsen du vill resa till)");
+Console.WriteLine("1. Golorn");
+Console.WriteLine("2. Aetherwind");
+string resa = Console.ReadLine();
+int.TryParse(resa, out int valdaResa);
+
+while (valdaResa != 1 && valdaResa != 2)
+{
+    Console.WriteLine("Skriv siffran innan namnet på staden du vill resa till");
+    Console.WriteLine("1. Golorn");
+    Console.WriteLine("2. Aetherwind"); 
+    resa = Console.ReadLine();
+    int.TryParse(resa, out valdaResa);
+    Console.Clear();
+}
+
+if (valdaResa == 1)
+{
+    Console.WriteLine($"Golorn är en väldig fin stad, Ett bra val {heroName}");
+    Console.ReadLine();
+    Console.Clear();
+}
+else if (valdaResa == 2)
+{
+    Console.WriteLine($"Aetherwind är en unik men väldig fint slott, Ett bra val {heroName}");
+    Console.ReadLine();
+    Console.Clear();
+}
+
+
+
+
+
+
+// Spelomgång
