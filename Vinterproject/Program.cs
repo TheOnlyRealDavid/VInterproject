@@ -69,3 +69,43 @@ else
     guld = 100;
 }
 
+Console.WriteLine($"Tjenare {heroName} välkomen till min smedja, Mitt namn är Robert, Perfekt att du kom när du kom, Jag har precis tillverkad tre nya vapen vilket du kan få köpa (Skriv siffran på vapnet du vill köpa) ");
+Console.WriteLine("1. Svärd");
+Console.WriteLine("2. Yxa");
+Console.WriteLine("3. StridsHammare");
+string vapen = Console.ReadLine();
+int.TryParse(vapen, out int valdaVapen);
+Console.Clear();
+
+while (valdaVapen != 1 && valdaVapen !=2 && valdaVapen !=3)
+{
+    Console.WriteLine("Vänligen skriv siffran på dit önskande vapen");
+    Console.WriteLine("1. Svärd");
+    Console.WriteLine("2. Yxa");
+    Console.WriteLine("3. StridsHammare");
+    vapen = Console.ReadLine();
+    int.TryParse(vapen, out valdaVapen);
+    Console.Clear();
+}
+
+if (valdaVapen == 1)
+{
+    Console.WriteLine($"Fint val {heroName} ditt svärd kommer tjäna dig bra - Robert ");
+    Console.ReadLine();
+    Console.Clear();
+}
+
+else if (valdaVapen == 2)
+{
+    Console.WriteLine($"Fint val {heroName} din yxa kommer tjäna dig bra - Robert ");
+    Console.ReadLine();
+    Console.Clear();
+}
+
+else
+{
+    Console.WriteLine($"Fint val {heroName} din StridsHammare kommer tjäna dig bra - Robert ");
+    Console.ReadLine();
+    Console.Clear();
+}
+
