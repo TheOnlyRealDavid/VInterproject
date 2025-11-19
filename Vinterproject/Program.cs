@@ -23,7 +23,7 @@ using System.Runtime.CompilerServices;
 
 Console.WriteLine("[===--Elarion--===]");
 Console.WriteLine("--Det har varit ett brutalt inbördeskrig i Elarion, Där kung Alvareon Lysandrel blev avsatt tronen av rebelen Arthur Stark och straffad för sina gryma handlingar mot folket av Elarion--");
-Console.WriteLine("Tryck en valfri knapp för att gå vidare");
+Console.WriteLine("Tryck enter för att gå vidare");
 Console.ReadLine();
 Console.Clear();
 
@@ -35,7 +35,7 @@ while (heroName.Length > 10)
     heroName = Console.ReadLine();
 }
 
-Console.WriteLine($"Vilket fint namn {heroName}, tryck en valfri kanpp för att gå vidare");
+Console.WriteLine($"Vilket fint namn {heroName}, tryck enter för att gå vidare");
 Console.ReadLine();
 Console.Clear();
 
@@ -77,6 +77,9 @@ else
 
 
 
+int styrka = 0; // dessa variabler kommer användas mer under spelomgången
+int försvar = 0;
+
 Console.WriteLine($"Tjenare {heroName} välkomen till min smedja, Mitt namn är Robert, Perfekt att du kom när du kom, Jag har precis tillverkad tre nya vapen vilket du kan få köpa (Skriv siffran på vapnet du vill köpa) ");
 Console.WriteLine("1. Svärd");
 Console.WriteLine("2. Yxa");
@@ -100,26 +103,33 @@ if (valdaVapen == 1)
 {
     Console.WriteLine($"Fint val {heroName} ditt svärd kommer tjäna dig bra på dina äventyr - Robert ");
     Console.ReadLine();
+    styrka += 5;
+    försvar += 15;
     Console.Clear();
 }
 
 else if (valdaVapen == 2)
 {
-    Console.WriteLine($"Fint val {heroName} din yxa kommer tjäna dig bra på dina äventyr - Robert ");
+    Console.WriteLine($"Fint val {heroName} din yxa kommer tjäna dig bra på dina äventyr - Robert (Tryck enter för att gå vidare)");
     Console.ReadLine();
+    styrka += 10;
+    försvar += 10;
     Console.Clear();
 }
 
 else
 {
-    Console.WriteLine($"Fint val {heroName} din StridsHammare kommer tjäna dig bra på dina äventyr - Robert ");
+    Console.WriteLine($"Fint val {heroName} din StridsHammare kommer tjäna dig bra på dina äventyr - Robert (Tryck enter för att gå vidare) ");
     Console.ReadLine();
+    styrka += 15;
+    försvar += 5;
     Console.Clear();
 }
 
 
 
 
+int avstånd = 0; // denna variabel kommer avändas senare under spelomgången och är tänk att användas till att räkna ut hur många händelser som kommer inträffa, (högre avstånd mer händelser)
 
 Console.WriteLine($"Det finns äventyr att ta till dig, {heroName} - Robert");
 Console.WriteLine($"Jag har några ställen du kan börja din resa till- Robert (Skriv siffran på platsen du vill resa till)");
@@ -140,14 +150,16 @@ while (valdaResa != 1 && valdaResa != 2)
 
 if (valdaResa == 1)
 {
-    Console.WriteLine($"Golorn är en väldig fin stad, Ett bra val {heroName}");
+    Console.WriteLine($"Golorn är en väldig fin stad, Ett bra val {heroName} (Tryck enter för att gå vidare)");
     Console.ReadLine();
+    avstånd += 20;
     Console.Clear();
 }
 else if (valdaResa == 2)
 {
-    Console.WriteLine($"Aetherwind är en unik men väldig fint slott, Ett bra val {heroName}");
+    Console.WriteLine($"Aetherwind är en unik men väldig fint slott, Ett bra val {heroName} (Tryck enter för att gå vidare)");
     Console.ReadLine();
+    avstånd += 10;
     Console.Clear();
 }
 
