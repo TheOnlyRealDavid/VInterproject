@@ -61,11 +61,11 @@ while(speläge != 1 && speläge !=2)
     Console.Clear();
 }
 
-int guld;
+int guld; // kommer användas för att köpa vapen och kunna betala för att överkomma en händelse, ex muta fienden att inte attackera
 
 if (speläge == 2)
 {
-    guld = 20;
+    guld = 25;
 }
 
 else
@@ -81,9 +81,10 @@ int styrka = 0; // dessa variabler kommer användas mer under spelomgången
 int försvar = 0;
 
 Console.WriteLine($"Tjenare {heroName} välkomen till min smedja, Mitt namn är Robert, Perfekt att du kom när du kom, Jag har precis tillverkad tre nya vapen vilket du kan få köpa (Skriv siffran på vapnet du vill köpa) ");
-Console.WriteLine("1. Svärd");
-Console.WriteLine("2. Yxa");
-Console.WriteLine("3. StridsHammare");
+Console.WriteLine($"(Du har {guld} guld att spendera)");
+Console.WriteLine("1. Svärd, 10 guld");
+Console.WriteLine("2. Yxa, 5 guld");
+Console.WriteLine("3. StridsHammare, 20 guld");
 string vapen = Console.ReadLine();
 int.TryParse(vapen, out int valdaVapen);
 Console.Clear();
@@ -91,9 +92,10 @@ Console.Clear();
 while (valdaVapen != 1 && valdaVapen !=2 && valdaVapen !=3)
 {
     Console.WriteLine("Vänligen skriv siffran på dit önskande vapen");
-    Console.WriteLine("1. Svärd");
-    Console.WriteLine("2. Yxa");
-    Console.WriteLine("3. StridsHammare");
+    Console.WriteLine($"kom ihåg du har bara {guld} guld till dit namn");
+    Console.WriteLine("1. Svärd, 10 guld");
+    Console.WriteLine("2. Yxa, 5 guld");
+    Console.WriteLine("3. StridsHammare, 20 guld");
     vapen = Console.ReadLine();
     int.TryParse(vapen, out valdaVapen);
     Console.Clear();
@@ -105,6 +107,7 @@ if (valdaVapen == 1)
     Console.ReadLine();
     styrka += 5;
     försvar += 15;
+    guld -= 10;
     Console.Clear();
 }
 
@@ -113,7 +116,8 @@ else if (valdaVapen == 2)
     Console.WriteLine($"Fint val {heroName} din yxa kommer tjäna dig bra på dina äventyr - Robert (Tryck enter för att gå vidare)");
     Console.ReadLine();
     styrka += 10;
-    försvar += 10;
+    försvar += 0;
+    guld -= 5;
     Console.Clear();
 }
 
@@ -121,8 +125,9 @@ else
 {
     Console.WriteLine($"Fint val {heroName} din StridsHammare kommer tjäna dig bra på dina äventyr - Robert (Tryck enter för att gå vidare) ");
     Console.ReadLine();
-    styrka += 15;
-    försvar += 5;
+    styrka += 20;
+    försvar += 10;
+    guld -= 20;
     Console.Clear();
 }
 
@@ -169,3 +174,34 @@ else if (valdaResa == 2)
 
 
 // Spelomgång
+
+int hälsa = 100;
+
+while (avstånd > 0 && hälsa > 0)
+{
+    
+}
+
+
+
+
+
+// Slut
+ 
+ if (hälsa > 0)
+{
+    Console.WriteLine($"Ett bra försök {heroName}, men ditt liv slockandes, (Tryck enter för att avsluta spelet)");
+    Console.ReadLine();
+}
+
+else if (avstånd > 0 && valdaResa == 1)
+{
+   Console.WriteLine($"Bra jobbat {heroName}, du kom fram till Golorn, (Tryck enter för att avsluta spelet)"); 
+   Console.ReadLine();
+}
+
+else if (avstånd > 0 && valdaResa == 2)
+{
+    Console.WriteLine($"Bra jobbat {heroName}, du kom fram till Aetherwind, (Tryck enter för att avsluta spelet)"); 
+    Console.ReadLine();
+}
