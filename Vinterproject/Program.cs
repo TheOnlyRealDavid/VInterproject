@@ -179,6 +179,27 @@ int hälsa = 100;
 
 while (avstånd > 0 && hälsa > 0)
 {
+    List<string> händelser = ["bakhåll", "handlare", "vilt djur" ];
+    string händelse = händelser[Random.Shared.Next(händelser.Count)];
+
+    if (händelse == "bakhåll")
+    {
+        Console.WriteLine($"det är ett {händelse}!");
+        Console.ReadLine();
+    }
+
+    else if (händelse == "handlare")
+    {
+        Console.WriteLine($"det kom en {händelse}!");
+        Console.ReadLine();
+    }
+
+    else if (händelse == "vilt djur")
+    {
+        Console.WriteLine($"ett {händelse} dök upp!");
+        Console.ReadLine();
+    }
+
     
 }
 
