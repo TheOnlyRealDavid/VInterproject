@@ -20,6 +20,7 @@
 // Start
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.Marshalling;
 
 Console.WriteLine("[===--Elarion--===]");
 Console.WriteLine("--Det har varit ett brutalt inbördeskrig i Elarion, Där kung Alvareon Lysandrel blev avsatt tronen av rebelen Arthur Stark och straffad för sina gryma handlingar mot folket av Elarion--");
@@ -184,8 +185,56 @@ while (avstånd > 0 && hälsa > 0)
 
     if (händelse == "bakhåll")
     {
-        Console.WriteLine($"det är ett {händelse}!");
+        Console.WriteLine($"det är ett {händelse}!, vad tänker du göra?");
+        Console.WriteLine("1. Försöka muta fienden");
+        Console.WriteLine("2. Bekämpa fienden");
+        Console.WriteLine("3. Försöka att springa iväg");
+        string bakhåll = Console.ReadLine();
+        int.TryParse(bakhåll, out int bVallet);
         Console.ReadLine();
+
+        while (bVallet != 1 && bVallet != 2 && bVallet !=3)
+        {
+            Console.WriteLine("Du kan bara välja mellan 1, 2 eller 3");
+            Console.WriteLine($"1. Försöka muta fienden, du har {guld} guld ");
+            Console.WriteLine("2. Bekämpa fienden");
+            Console.WriteLine("3. Försöka att springa iväg");
+            bakhåll = Console.ReadLine();
+            int.TryParse(bakhåll, out bVallet);
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        if (bVallet == 1)
+        {
+
+            if (guld < 15)
+            {
+                Console.WriteLine("Du har inte tillräckligt guld för att jag ska ge mig - Fiende");
+                Console.WriteLine("Var beräd att känna mitt vrede - Fiende");
+                Console.ReadLine();
+                Console.Clear();
+                bVallet ++;
+                
+            }
+
+            Console.WriteLine("Jaaa, ge mig 15 guld och du är fri att gå- Fiende");
+            Console.ReadLine();
+            Console.Clear();
+            guld -= 15;
+
+        }
+
+        if (bVallet == 2)
+        {
+            
+        }
+
+        if (bVallet == 3)
+        {
+            
+        }
+    
     }
 
     else if (händelse == "handlare")
