@@ -165,7 +165,7 @@ else if (valdaResa == 2)
 {
     Console.WriteLine($"Aetherwind är en unik men väldig fint slott, Ett bra val {heroName} (Tryck enter för att gå vidare)");
     Console.ReadLine();
-    avstånd += 10;
+    avstånd += 15;
     Console.Clear();
 }
 
@@ -186,8 +186,8 @@ while (avstånd > 0 && hälsa > 0)
     if (händelse == "bakhåll")
     {
         Console.WriteLine($"det är ett {händelse}!, vad tänker du göra?");
-        Console.WriteLine("1. Försöka muta fienden");
-        Console.WriteLine("2. Bekämpa fienden");
+        Console.WriteLine("1. Försöka muta orcen");
+        Console.WriteLine("2. Bekämpa orcen");
         Console.WriteLine("3. Försöka att springa iväg");
         string bakhåll = Console.ReadLine();
         int.TryParse(bakhåll, out int bVallet);
@@ -196,43 +196,95 @@ while (avstånd > 0 && hälsa > 0)
         while (bVallet != 1 && bVallet != 2 && bVallet !=3)
         {
             Console.WriteLine("Du kan bara välja mellan 1, 2 eller 3");
-            Console.WriteLine($"1. Försöka muta fienden, du har {guld} guld ");
-            Console.WriteLine("2. Bekämpa fienden");
+            Console.WriteLine($"1. Försöka muta orcen, du har {guld} guld ");
+            Console.WriteLine("2. Bekämpa orcen");
             Console.WriteLine("3. Försöka att springa iväg");
             bakhåll = Console.ReadLine();
             int.TryParse(bakhåll, out bVallet);
-            Console.ReadLine();
             Console.Clear();
         }
 
         if (bVallet == 1)
         {
-
             if (guld < 15)
             {
-                Console.WriteLine("Du har inte tillräckligt guld för att jag ska ge mig - Fiende");
-                Console.WriteLine("Var beräd att känna mitt vrede - Fiende");
+                Console.WriteLine("Du har inte tillräckligt guld för att jag ska ge mig - orc");
+                Console.WriteLine("Var beräd att känna mitt vrede- orc");
                 Console.ReadLine();
                 Console.Clear();
                 bVallet ++;
                 
             }
 
-            Console.WriteLine("Jaaa, ge mig 15 guld och du är fri att gå- Fiende");
+            if (guld > 15)
+            {
+            Console.WriteLine("Jaaa, ge mig 15 guld och du är fri att gå- orc");
             Console.ReadLine();
             Console.Clear();
+            avstånd -= 5;
             guld -= 15;
+            }
 
         }
 
         if (bVallet == 2)
         {
-            
+            int orcHälsa = 250;
+            int spelOmgång = 0;
+            Console.WriteLine("Du tror att du kan besegra mig- orcen");
+            Console.Clear();
+                while (hälsa > 0 && orcHälsa > 0)
+                {  
+                    spelOmgång ++;
+                    Console.WriteLine($"--=== Omgång {spelOmgång} ===-- ");
+                    Console.WriteLine($"{heroName}: {hälsa}    Orchen: {orcHälsa}");
+
+                    int spelarSkada = Random.Shared.Next(16);
+                    Console.WriteLine($"{heroName} gjorde {spelarSkada} skada");
+                    Console.WriteLine($"Din syrka bidrar med en skada på {styrka}");
+                    orcHälsa -= spelarSkada;
+                    orcHälsa -= styrka;
+                    orcHälsa = Math.Max(0, orcHälsa);
+
+                    int orcSkada = Random.Shared.Next(20, 51);
+                    Console.WriteLine($"Orchen gjorde {orcSkada} skada");
+                    Console.WriteLine($"Ditt försvar gav dig {försvar} liv");
+                    hälsa -= orcSkada;
+                    hälsa += försvar;
+                    hälsa = Math.Max(0, hälsa);
+
+                    Console.WriteLine("(Tryck enter för att gå vidare)");
+
+                    Console.ReadLine();
+                    Console.Clear();
+
+                    if (orcHälsa <= 0)
+                    {
+                        Console.WriteLine($"Bra gjort {heroName}, du lyckades besegra orchen");
+                        avstånd -= 10;
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                }
         }
 
         if (bVallet == 3)
         {
-            
+            int fly = Random.Shared.Next(11);
+            if (fly == 0)
+            {
+                Console.WriteLine($"Bra gjort {heroName}, du lyckades fly från orcen");
+                avstånd -= 10;
+                Console.ReadLine();
+                Console.Clear();
+            }
+            else if (fly >= 1)
+            {
+                Console.WriteLine("HAHAHA du trodde du kunde komm ifrån mig - orc");
+                bVallet -= 1;
+                Console.ReadLine();
+                Console.Clear();  
+            }
         }
     
     }
@@ -258,19 +310,19 @@ while (avstånd > 0 && hälsa > 0)
 
 // Slut
  
- if (hälsa > 0)
+ if (hälsa <= 0)
 {
     Console.WriteLine($"Ett bra försök {heroName}, men ditt liv slockandes, (Tryck enter för att avsluta spelet)");
     Console.ReadLine();
 }
 
-else if (avstånd > 0 && valdaResa == 1)
+else if (avstånd <= 0 && valdaResa == 1)
 {
    Console.WriteLine($"Bra jobbat {heroName}, du kom fram till Golorn, (Tryck enter för att avsluta spelet)"); 
    Console.ReadLine();
 }
 
-else if (avstånd > 0 && valdaResa == 2)
+else if (avstånd <= 0 && valdaResa == 2)
 {
     Console.WriteLine($"Bra jobbat {heroName}, du kom fram till Aetherwind, (Tryck enter för att avsluta spelet)"); 
     Console.ReadLine();
