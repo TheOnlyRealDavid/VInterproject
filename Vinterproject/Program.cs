@@ -190,7 +190,7 @@ while (avstånd > 0 && hälsa > 0)
         Console.WriteLine("2. Bekämpa orcen");
         Console.WriteLine("3. Försöka att springa iväg");
         string bakhåll = Console.ReadLine();
-        int.TryParse(bakhåll, out int bVallet);
+        int.TryParse(bakhåll, out int bVallet); // bvalet står för det vall som man väler under bahålls, alltså bvallet
         Console.ReadLine();
 
         while (bVallet != 1 && bVallet != 2 && bVallet !=3)
@@ -229,10 +229,13 @@ while (avstånd > 0 && hälsa > 0)
 
         if (bVallet == 2)
         {
+        
             int orcHälsa = 250;
             int spelOmgång = 0;
             Console.WriteLine("Du tror att du kan besegra mig- orcen");
             Console.Clear();
+            
+                
                 while (hälsa > 0 && orcHälsa > 0)
                 {  
                     spelOmgång ++;
@@ -266,6 +269,7 @@ while (avstånd > 0 && hälsa > 0)
                         Console.Clear();
                     }
                 }
+            
         }
 
         if (bVallet == 3)
@@ -280,8 +284,8 @@ while (avstånd > 0 && hälsa > 0)
             }
             else if (fly >= 1)
             {
-                Console.WriteLine("HAHAHA du trodde du kunde komm ifrån mig - orc");
-                bVallet -= 1;
+                Console.WriteLine("Du lyckades fly från orcen men sprang åt fel håll så nu är du längre ifrån desinationen");
+                avstånd += 10;
                 Console.ReadLine();
                 Console.Clear();  
             }
@@ -292,7 +296,60 @@ while (avstånd > 0 && hälsa > 0)
     else if (händelse == "handlare")
     {
         Console.WriteLine($"det kom en {händelse}!");
-        Console.ReadLine();
+        Console.WriteLine($"Tjena {heroName} jag har några saker att sälja till dig om du önskar det (Skriv siffran på ditt val)");
+        Console.WriteLine($"1. 20 liv för 20 guld, din nuvarande hälsa: {hälsa}");
+        Console.WriteLine($"2. 20 styrka för 20 guld, din nuvarande syrka: {styrka} ");
+        Console.WriteLine("3. Jag vill inte köpa något");
+        Console.WriteLine($"Guld: {guld}");
+        string hvall = Console.ReadLine();
+        int.TryParse(hvall, out int hvallet); // hvallet står för valet du gjorde under händelsen handlare, alltså hvallet
+        Console.Clear();
+
+        while (hvallet != 1 && hvallet !=2 && hvallet != 3)
+        {
+            Console.WriteLine($"Tyvärr {heroName} du måste välja mellan någon av alternativen 1-3 ");
+            Console.WriteLine($"1. 20 liv för 20 guld, din nuvarande hälsa: {hälsa}");
+            Console.WriteLine($"2. 20 styrka för 20 guld, din nuvarande syrka: {styrka} ");
+            Console.WriteLine("3. Jag vill inte köpa något");
+            hvall = Console.ReadLine();
+            int.TryParse(hvall, out hvallet);
+            Console.Clear();
+        }
+
+        if (hvallet == 1 && guld > 20)
+        {
+            Console.WriteLine($"Tack för köpet, {heroName} - Handlaren");
+            Console.ReadLine();
+            Console.Clear();
+            hälsa += 20;
+            guld -= 20; 
+        }
+
+        else if (hvallet == 2 && guld > 20)
+        {
+            Console.WriteLine($"Tack för köpet, {heroName} - Handlaren");
+            Console.ReadLine();
+            Console.Clear();
+            styrka += 20;
+            guld -= 20; 
+        }
+
+        else if (hvallet == 3)
+        {
+            Console.WriteLine($"Det var tråkigt att du inte köpte något, {heroName} - Handlaren");
+            avstånd -= 5; // har förlorar du anvstånd för du stannade inte extra länge och pratade med handelsmanne
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        else if (guld < 20)
+        {
+            Console.WriteLine($"Du hadde tyvärr inte råd med något, {heroName} - Handlare");
+            Console.ReadLine();
+            Console.Clear();
+        }
+
+        
     }
 
     else if (händelse == "vilt djur")
