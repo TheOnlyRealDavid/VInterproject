@@ -16,8 +16,10 @@
 // Om spelaren kommer fram till sin plats utan att dö kommer hen vinna spelet men om hen dör så kommer hen förlora spelet
 
 
-
+//================================================================================
 // Start
+//--------------------------------------------------------------------------------
+
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.Marshalling;
@@ -29,22 +31,24 @@ Console.ReadLine();
 Console.Clear();
 
 Console.WriteLine("Välkommen kära spelare, välj ditt namn på din kämpe (max 10 bokstäver)");
-string heroName = Console.ReadLine();
-while (heroName.Length > 10)
+string hjälteNamn = Console.ReadLine();
+while (hjälteNamn.Length > 10)
 {
     Console.WriteLine("Ditt namn får max vara 10 bokstäver");
-    heroName = Console.ReadLine();
+    hjälteNamn = Console.ReadLine();
 }
 
-Console.WriteLine($"Vilket fint namn {heroName}, tryck enter för att gå vidare");
+Console.WriteLine($"Vilket fint namn {hjälteNamn}, tryck enter för att gå vidare");
 Console.ReadLine();
 Console.Clear();
 
 
 
 
-
+//============================================================================================
 //Beslutagande
+//--------------------------------------------------------------------------------------------
+
 Console.WriteLine("Vilken svårhetsgrad(1 eller 2)?");
 Console.WriteLine("1.Normal");
 Console.WriteLine("2.Hardcore");
@@ -81,7 +85,7 @@ else
 int styrka = 0; // dessa variabler kommer användas mer under spelomgången
 int försvar = 0;
 
-Console.WriteLine($"Tjenare {heroName} välkomen till min smedja, Mitt namn är Robert, Perfekt att du kom när du kom, Jag har precis tillverkad tre nya vapen vilket du kan få köpa (Skriv siffran på vapnet du vill köpa) ");
+Console.WriteLine($"Tjenare {hjälteNamn} välkomen till min smedja, Mitt namn är Robert, Perfekt att du kom när du kom, Jag har precis tillverkad tre nya vapen vilket du kan få köpa (Skriv siffran på vapnet du vill köpa) ");
 Console.WriteLine($"(Du har {guld} guld att spendera)");
 Console.WriteLine("1. Svärd, 10 guld");
 Console.WriteLine("2. Yxa, 5 guld");
@@ -104,7 +108,7 @@ while (valdaVapen != 1 && valdaVapen !=2 && valdaVapen !=3)
 
 if (valdaVapen == 1)
 {
-    Console.WriteLine($"Fint val {heroName} ditt svärd kommer tjäna dig bra på dina äventyr - Robert ");
+    Console.WriteLine($"Fint val {hjälteNamn} ditt svärd kommer tjäna dig bra på dina äventyr - Robert ");
     Console.ReadLine();
     styrka += 5;
     försvar += 15;
@@ -114,7 +118,7 @@ if (valdaVapen == 1)
 
 else if (valdaVapen == 2)
 {
-    Console.WriteLine($"Fint val {heroName} din yxa kommer tjäna dig bra på dina äventyr - Robert (Tryck enter för att gå vidare)");
+    Console.WriteLine($"Fint val {hjälteNamn} din yxa kommer tjäna dig bra på dina äventyr - Robert (Tryck enter för att gå vidare)");
     Console.ReadLine();
     styrka += 10;
     försvar += 0;
@@ -124,7 +128,7 @@ else if (valdaVapen == 2)
 
 else
 {
-    Console.WriteLine($"Fint val {heroName} din StridsHammare kommer tjäna dig bra på dina äventyr - Robert (Tryck enter för att gå vidare) ");
+    Console.WriteLine($"Fint val {hjälteNamn} din StridsHammare kommer tjäna dig bra på dina äventyr - Robert (Tryck enter för att gå vidare) ");
     Console.ReadLine();
     styrka += 20;
     försvar += 10;
@@ -137,7 +141,7 @@ else
 
 int avstånd = 0; // denna variabel kommer avändas senare under spelomgången och är tänk att användas till att räkna ut hur många händelser som kommer inträffa, (högre avstånd mer händelser)
 
-Console.WriteLine($"Det finns äventyr att ta till dig, {heroName} - Robert");
+Console.WriteLine($"Det finns äventyr att ta till dig, {hjälteNamn} - Robert");
 Console.WriteLine($"Jag har några ställen du kan börja din resa till- Robert (Skriv siffran på platsen du vill resa till)");
 Console.WriteLine("1. Golorn");
 Console.WriteLine("2. Aetherwind");
@@ -156,14 +160,14 @@ while (valdaResa != 1 && valdaResa != 2)
 
 if (valdaResa == 1)
 {
-    Console.WriteLine($"Golorn är en väldig fin stad, Ett bra val {heroName} (Tryck enter för att gå vidare)");
+    Console.WriteLine($"Golorn är en väldig fin stad, Ett bra val {hjälteNamn} (Tryck enter för att gå vidare)");
     Console.ReadLine();
     avstånd += 20;
     Console.Clear();
 }
 else if (valdaResa == 2)
 {
-    Console.WriteLine($"Aetherwind är en unik men väldig fint slott, Ett bra val {heroName} (Tryck enter för att gå vidare)");
+    Console.WriteLine($"Aetherwind är en unik men väldig fint slott, Ett bra val {hjälteNamn} (Tryck enter för att gå vidare)");
     Console.ReadLine();
     avstånd += 15;
     Console.Clear();
@@ -173,8 +177,9 @@ else if (valdaResa == 2)
 
 
 
-
+//============================================================================================
 // Spelomgång
+//--------------------------------------------------------------------------------------------
 
 int hälsa = 100;
 
@@ -182,6 +187,10 @@ while (avstånd > 0 && hälsa > 0)
 {
     List<string> händelser = ["bakhåll", "handlare", "vilt djur" ];
     string händelse = händelser[Random.Shared.Next(händelser.Count)];
+
+//===========================================================================================
+// Händesle Bakhåll
+//-------------------------------------------------------------------------------------------
 
     if (händelse == "bakhåll")
     {
@@ -240,10 +249,10 @@ while (avstånd > 0 && hälsa > 0)
                 {  
                     spelOmgång ++;
                     Console.WriteLine($"--=== Omgång {spelOmgång} ===-- ");
-                    Console.WriteLine($"{heroName}: {hälsa}    Orchen: {orcHälsa}");
+                    Console.WriteLine($"{hjälteNamn}: {hälsa}    Orchen: {orcHälsa}");
 
                     int spelarSkada = Random.Shared.Next(16);
-                    Console.WriteLine($"{heroName} gjorde {spelarSkada} skada");
+                    Console.WriteLine($"{hjälteNamn} gjorde {spelarSkada} skada");
                     Console.WriteLine($"Din syrka bidrar med en skada på {styrka}");
                     orcHälsa -= spelarSkada;
                     orcHälsa -= styrka;
@@ -263,7 +272,7 @@ while (avstånd > 0 && hälsa > 0)
 
                     if (orcHälsa <= 0)
                     {
-                        Console.WriteLine($"Bra gjort {heroName}, du lyckades besegra orchen");
+                        Console.WriteLine($"Bra gjort {hjälteNamn}, du lyckades besegra orchen");
                         avstånd -= 10;
                         Console.ReadLine();
                         Console.Clear();
@@ -277,7 +286,7 @@ while (avstånd > 0 && hälsa > 0)
             int fly = Random.Shared.Next(11);
             if (fly == 0)
             {
-                Console.WriteLine($"Bra gjort {heroName}, du lyckades fly från orcen");
+                Console.WriteLine($"Bra gjort {hjälteNamn}, du lyckades fly från orcen");
                 avstånd -= 10;
                 Console.ReadLine();
                 Console.Clear();
@@ -293,10 +302,14 @@ while (avstånd > 0 && hälsa > 0)
     
     }
 
+//===========================================================================================
+// Händesle handlare
+//-------------------------------------------------------------------------------------------
+
     else if (händelse == "handlare")
     {
         Console.WriteLine($"det kom en {händelse}!");
-        Console.WriteLine($"Tjena {heroName} jag har några saker att sälja till dig om du önskar det (Skriv siffran på ditt val)");
+        Console.WriteLine($"Tjena {hjälteNamn} jag har några saker att sälja till dig om du önskar det (Skriv siffran på ditt val)");
         Console.WriteLine($"1. 20 liv för 20 guld, din nuvarande hälsa: {hälsa}");
         Console.WriteLine($"2. 20 styrka för 20 guld, din nuvarande syrka: {styrka} ");
         Console.WriteLine("3. Jag vill inte köpa något");
@@ -307,7 +320,7 @@ while (avstånd > 0 && hälsa > 0)
 
         while (hvallet != 1 && hvallet !=2 && hvallet != 3)
         {
-            Console.WriteLine($"Tyvärr {heroName} du måste välja mellan någon av alternativen 1-3 ");
+            Console.WriteLine($"Tyvärr {hjälteNamn} du måste välja mellan någon av alternativen 1-3 ");
             Console.WriteLine($"1. 20 liv för 20 guld, din nuvarande hälsa: {hälsa}");
             Console.WriteLine($"2. 20 styrka för 20 guld, din nuvarande syrka: {styrka} ");
             Console.WriteLine("3. Jag vill inte köpa något");
@@ -318,7 +331,7 @@ while (avstånd > 0 && hälsa > 0)
 
         if (hvallet == 1 && guld > 20)
         {
-            Console.WriteLine($"Tack för köpet, {heroName} - Handlaren");
+            Console.WriteLine($"Tack för köpet, {hjälteNamn} - Handlaren");
             Console.ReadLine();
             Console.Clear();
             hälsa += 20;
@@ -327,7 +340,7 @@ while (avstånd > 0 && hälsa > 0)
 
         else if (hvallet == 2 && guld > 20)
         {
-            Console.WriteLine($"Tack för köpet, {heroName} - Handlaren");
+            Console.WriteLine($"Tack för köpet, {hjälteNamn} - Handlaren");
             Console.ReadLine();
             Console.Clear();
             styrka += 20;
@@ -336,15 +349,15 @@ while (avstånd > 0 && hälsa > 0)
 
         else if (hvallet == 3)
         {
-            Console.WriteLine($"Det var tråkigt att du inte köpte något, {heroName} - Handlaren");
-            avstånd -= 5; // har förlorar du anvstånd för du stannade inte extra länge och pratade med handelsmanne
+            Console.WriteLine($"Det var tråkigt att du inte köpte något, {hjälteNamn} - Handlaren");
+            avstånd -= 5; // har förlorar du anvstånd för du stannade inte extra länge och pratade med handelsmanen
             Console.ReadLine();
             Console.Clear();
         }
 
         else if (guld < 20)
         {
-            Console.WriteLine($"Du hadde tyvärr inte råd med något, {heroName} - Handlare");
+            Console.WriteLine($"Du hadde tyvärr inte råd med något, {hjälteNamn} - Handlare");
             Console.ReadLine();
             Console.Clear();
         }
@@ -352,10 +365,112 @@ while (avstånd > 0 && hälsa > 0)
         
     }
 
+//===========================================================================================
+// Händesle viltDjur
+//-------------------------------------------------------------------------------------------
+
+
     else if (händelse == "vilt djur")
     {
         Console.WriteLine($"ett {händelse} dök upp!");
         Console.ReadLine();
+        Console.Clear();
+        List<string> djur = ["Varg", "Älg", "Häst"];
+        string djuret = djur[Random.Shared.Next(djur.Count)];
+
+        if (djuret == "Varg")
+        {
+            Console.WriteLine($"Det är en {djuret} vad tänker du göra? (skriv siffran)");
+            Console.WriteLine("1. Slås mot vargen");
+            Console.WriteLine("2. Springa iväg ");
+            string dValen = Console.ReadLine(); // dvValen betyder djur varg valet
+            int.TryParse(dValen, out int dvValet);
+            Console.Clear();
+
+            while(dvValet != 1 && dvValet != 2)
+            {
+                Console.WriteLine("Du måste välje mellan 1 eller 2");
+                Console.WriteLine("1. Slås mot vargen");
+                Console.WriteLine("2. Springa iväg ");
+                dValen = Console.ReadLine();
+                int.TryParse(dValen, out dvValet);
+                Console.Clear();
+            }
+
+            if(dvValet == 1)
+            {
+                int djurSpelomgång = 0;
+                int vargLiv = 250;
+                Console.WriteLine($"{hjälteNamn}, Vargar är farliga djur lycka till");
+                Console.ReadLine();
+                Console.Clear();
+
+                while(vargLiv > 0 && hälsa > 0)
+                {
+                djurSpelomgång ++;
+                Console.WriteLine($"--==={djurSpelomgång}===--");
+                Console.WriteLine($"{hjälteNamn}: {hälsa}     Vargen: {vargLiv}");
+                
+                int jaktSkada = Random.Shared.Next(15);
+                Console.WriteLine($"{hjälteNamn}, gjorde {jaktSkada} på vargen");
+                Console.WriteLine($"Din styka bidrog med {styrka} skada");
+                vargLiv -= jaktSkada;
+                vargLiv -= styrka;
+                vargLiv = Math.Max(0, vargLiv);
+
+                int vargSkada = Random.Shared.Next(30, 61);
+                Console.WriteLine($"Vargen gjorde {vargSkada} på {hjälteNamn}");
+                Console.WriteLine($"Ditt försvar bidrog med {försvar} liv");
+                hälsa -= vargSkada;
+                hälsa += försvar;
+                hälsa = Math.Max(0, hälsa);
+
+                Console.WriteLine("(Tryck enter för att gå vidare)");
+                Console.ReadLine();
+                Console.Clear();
+
+                if (vargLiv <= 0)
+                {
+                    Console.WriteLine($"Bra gjort {hjälteNamn}, du lyckades ta ner en varg ");
+                    Console.ReadLine();
+                    Console.Clear();
+                    avstånd -= 5;
+
+                    Console.WriteLine("(Tryck enter för att gå vidare)");
+                }
+
+                }
+            }
+
+            else if (dvValet == 2)
+            {
+                int fly = Random.Shared.Next(11);
+                if (fly == 0)
+                {
+                    Console.WriteLine($"Bra gjort {hjälteNamn}, du lyckades fly från vargen");
+                    avstånd -= 10;
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+                else if (fly >= 1)
+                {
+                    Console.WriteLine("Du lyckades fly från vargen men sprang åt fel håll så nu är du längre ifrån desinationen");
+                    avstånd += 10;
+                    Console.ReadLine();
+                    Console.Clear();  
+                }
+            }
+        }
+
+        else if (djuret == "Älg")
+        {
+            
+        }
+
+        else if (djuret == "Häst")
+        {
+            
+        }
     }
 
     
@@ -364,23 +479,24 @@ while (avstånd > 0 && hälsa > 0)
 
 
 
-
+//============================================================================================
 // Slut
+//--------------------------------------------------------------------------------------------
  
  if (hälsa <= 0)
 {
-    Console.WriteLine($"Ett bra försök {heroName}, men ditt liv slockandes, (Tryck enter för att avsluta spelet)");
+    Console.WriteLine($"Ett bra försök {hjälteNamn}, men ditt liv slockandes, (Tryck enter för att avsluta spelet)");
     Console.ReadLine();
 }
 
 else if (avstånd <= 0 && valdaResa == 1)
 {
-   Console.WriteLine($"Bra jobbat {heroName}, du kom fram till Golorn, (Tryck enter för att avsluta spelet)"); 
+   Console.WriteLine($"Bra jobbat {hjälteNamn}, du kom fram till Golorn, (Tryck enter för att avsluta spelet)"); 
    Console.ReadLine();
 }
 
 else if (avstånd <= 0 && valdaResa == 2)
 {
-    Console.WriteLine($"Bra jobbat {heroName}, du kom fram till Aetherwind, (Tryck enter för att avsluta spelet)"); 
+    Console.WriteLine($"Bra jobbat {hjälteNamn}, du kom fram till Aetherwind, (Tryck enter för att avsluta spelet)"); 
     Console.ReadLine();
 }
