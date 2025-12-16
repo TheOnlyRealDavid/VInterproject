@@ -493,8 +493,8 @@ while (avstånd > 0 && hälsa > 0)
             while(dhvalet != 1 && dhvalet != 2);
             {
                 Console.WriteLine("Skriv siffran på vad du tänker göra.");
-                Console.WriteLine("1. Försöka tämja hästen");
-                Console.WriteLine("2. ignorera hästen och gå vidare");
+                Console.WriteLine("1. ignorera hästen och gå vidare");
+                Console.WriteLine("2. Försöka tämja hästen");
                 dhval = Console.ReadLine();
                 int.TryParse(dhval, out dhvalet);
                 Console.Clear();
@@ -502,7 +502,12 @@ while (avstånd > 0 && hälsa > 0)
 
             if (dhvalet == 1)
             {
+                Console.WriteLine($" {hjälteNamn}, du försätter vidare på ditt äventyr");
+                Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("(Tryck enter för att gå vidare)");
                 avstånd -= 5;
+
             }
 
             else if (dhvalet == 2)
@@ -520,11 +525,10 @@ while (avstånd > 0 && hälsa > 0)
 
                 else 
                 {
-                    Console.WriteLine($" {hjälteNamn}, du försätter vidare på ditt äventyr");
+                    Console.WriteLine($" {hjälteNamn}, du skrämde iväg hästen");
                     Console.ReadLine();
                     Console.Clear();
                     Console.WriteLine("(Tryck enter för att gå vidare)");
-                    avstånd -= 5;
                 }
 
 
