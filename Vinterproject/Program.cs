@@ -350,7 +350,7 @@ while (avstånd > 0 && hälsa > 0)
         else if (hvallet == 3)
         {
             Console.WriteLine($"Det var tråkigt att du inte köpte något, {hjälteNamn} - Handlaren");
-            avstånd -= 5; // har förlorar du anvstånd för du stannade inte extra länge och pratade med handelsmanen
+            avstånd -= 5; // här förlorar du anvstånd för du stannade inte extra länge och pratade med handelsmanen
             Console.ReadLine();
             Console.Clear();
         }
@@ -373,15 +373,21 @@ while (avstånd > 0 && hälsa > 0)
     else if (händelse == "vilt djur")
     {
         Console.WriteLine($"ett {händelse} dök upp!");
-        Console.ReadLine();
-        Console.Clear();
         List<string> djur = ["Varg", "Älg", "Häst"];
         string djuret = djur[Random.Shared.Next(djur.Count)];
+        Console.ReadLine();
+        Console.Clear();
+
+        Console.WriteLine("Tryck enter för att gå vidare");
+
+//==============================================================================
+// Varg
+//------------------------------------------------------------------------------
 
         if (djuret == "Varg")
         {
             Console.WriteLine($"Det är en {djuret} vad tänker du göra? (skriv siffran)");
-            Console.WriteLine("1. Slås mot vargen");
+            Console.WriteLine("1. Slåss mot vargen");
             Console.WriteLine("2. Springa iväg ");
             string dValen = Console.ReadLine(); // dvValen betyder djur varg valet
             int.TryParse(dValen, out int dvValet);
@@ -392,7 +398,7 @@ while (avstånd > 0 && hälsa > 0)
                 Console.WriteLine("Du måste välje mellan 1 eller 2");
                 Console.WriteLine("1. Slås mot vargen");
                 Console.WriteLine("2. Springa iväg ");
-                dValen = Console.ReadLine();
+                dValen = Console.ReadLine(); //dvalen betyder djurvalen
                 int.TryParse(dValen, out dvValet);
                 Console.Clear();
             }
@@ -462,14 +468,67 @@ while (avstånd > 0 && hälsa > 0)
             }
         }
 
+//==============================================================================
+// Älg
+//------------------------------------------------------------------------------
+
         else if (djuret == "Älg")
         {
             
         }
 
+//==============================================================================
+// Häst
+//------------------------------------------------------------------------------
+
         else if (djuret == "Häst")
         {
-            
+            Console.WriteLine($"Det är en {djuret}, vad tänker du göra? (skriv siffran)");
+            Console.WriteLine("1. Försöka tämja hästen");
+            Console.WriteLine("2. ignorera hästen och gå vidare");
+            string dhval = Console.ReadLine(); //dhvalet betyder sjur häst valet
+            int.TryParse(dhval, out int dhvalet);
+            Console.Clear();
+
+            while(dhvalet != 1 && dhvalet != 2);
+            {
+                Console.WriteLine("Skriv siffran på vad du tänker göra.");
+                Console.WriteLine("1. Försöka tämja hästen");
+                Console.WriteLine("2. ignorera hästen och gå vidare");
+                dhval = Console.ReadLine();
+                int.TryParse(dhval, out dhvalet);
+                Console.Clear();
+            }
+
+            if (dhvalet == 1)
+            {
+                avstånd -= 5;
+            }
+
+            else if (dhvalet == 2)
+            {
+                int tämja = Random.Shared.Next(100);
+
+                if (tämja == 1)
+                {
+                    Console.WriteLine($" {hjälteNamn}, du lyckades tämja hästen och du rider ända till din destination utan att bemöta några fler trubbel");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("(Tryck enter för att gå vidare)");
+                    avstånd = 0;
+                }
+
+                else 
+                {
+                    Console.WriteLine($" {hjälteNamn}, du försätter vidare på ditt äventyr");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("(Tryck enter för att gå vidare)");
+                    avstånd -= 5;
+                }
+
+
+            }
         }
     }
 
