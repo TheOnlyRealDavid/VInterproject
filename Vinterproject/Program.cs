@@ -372,13 +372,13 @@ while (avstånd > 0 && hälsa > 0)
 
     else if (händelse == "vilt djur")
     {
-        Console.WriteLine($"ett {händelse} dök upp!");
+        Console.WriteLine($"en {händelse} dök upp!");
         List<string> djur = ["Varg", "Älg", "Häst"];
         string djuret = djur[Random.Shared.Next(djur.Count)];
         Console.ReadLine();
+        Console.WriteLine("Tryck enter för att gå vidare");
         Console.Clear();
 
-        Console.WriteLine("Tryck enter för att gå vidare");
 
 //==============================================================================
 // Varg
@@ -439,10 +439,10 @@ while (avstånd > 0 && hälsa > 0)
                 {
                     Console.WriteLine($"Bra gjort {hjälteNamn}, du lyckades ta ner en varg ");
                     Console.ReadLine();
+                    Console.WriteLine("(Tryck enter för att gå vidare)");
                     Console.Clear();
                     avstånd -= 5;
 
-                    Console.WriteLine("(Tryck enter för att gå vidare)");
                 }
 
                 }
@@ -474,7 +474,50 @@ while (avstånd > 0 && hälsa > 0)
 
         else if (djuret == "Älg")
         {
+            Console.WriteLine($"Det är en {djuret}, vad tänker du göra? (skriv siffran)");
+            Console.WriteLine("1. Försöka smyga förbi älgen");
+            Console.WriteLine("2. Försöka skräma iväg älgen");
+            string däval = Console.ReadLine(); //dävalet betyder djur häst valen
+            int.TryParse(däval, out int dävalet);
+            Console.Clear();
+
+            while(dävalet != 1 && dävalet != 2);
+            {
+                Console.WriteLine("Skriv siffran på vad du tänker göra.");
+                Console.WriteLine("1. Försöka smyga förbi älgen ");
+                Console.WriteLine("2. Försöka skräma iväg älgen");
+                däval = Console.ReadLine();
+                int.TryParse(däval, out dävalet);
+                Console.Clear();
+            }
+
+            if (dävalet == 1)
+            {
+                int smygaFörbi = Random.Shared.Next(3);
+
+                if(smygaFörbi == 1)
+                {
+                    Console.WriteLine($"{hjälteNamn}, du luckades smyga förbi älgen");
+                    Console.ReadLine();
+                    Console.WriteLine("(Tryck enter för att gå vidare)");
+                    Console.Clear();
+                    avstånd -= 5;
+                }
+
+                else
+                {
+                    Console.WriteLine($"{hjälteNamn}, älgen kände sig hotad och spakade dig i magen du förlorade 50 liv, nu har du {hälsa} liv kvar");
+                    Console.ReadLine();
+                    Console.WriteLine("(Tryck enter för att gå vidare)");
+                    Console.Clear();
+                    hälsa -= 50;
+                }
+            }
+            else if (dävalet == 2)
+            {
             
+            }
+
         }
 
 //==============================================================================
@@ -486,7 +529,7 @@ while (avstånd > 0 && hälsa > 0)
             Console.WriteLine($"Det är en {djuret}, vad tänker du göra? (skriv siffran)");
             Console.WriteLine("1. Försöka tämja hästen");
             Console.WriteLine("2. ignorera hästen och gå vidare");
-            string dhval = Console.ReadLine(); //dhvalet betyder sjur häst valet
+            string dhval = Console.ReadLine(); //dhvalet betyder djur häst valen
             int.TryParse(dhval, out int dhvalet);
             Console.Clear();
 
@@ -504,8 +547,8 @@ while (avstånd > 0 && hälsa > 0)
             {
                 Console.WriteLine($" {hjälteNamn}, du försätter vidare på ditt äventyr");
                 Console.ReadLine();
-                Console.Clear();
                 Console.WriteLine("(Tryck enter för att gå vidare)");
+                Console.Clear();
                 avstånd -= 5;
 
             }
@@ -518,8 +561,8 @@ while (avstånd > 0 && hälsa > 0)
                 {
                     Console.WriteLine($" {hjälteNamn}, du lyckades tämja hästen och du rider ända till din destination utan att bemöta några fler trubbel");
                     Console.ReadLine();
-                    Console.Clear();
                     Console.WriteLine("(Tryck enter för att gå vidare)");
+                    Console.Clear();
                     avstånd = 0;
                 }
 
@@ -527,8 +570,8 @@ while (avstånd > 0 && hälsa > 0)
                 {
                     Console.WriteLine($" {hjälteNamn}, du skrämde iväg hästen");
                     Console.ReadLine();
-                    Console.Clear();
                     Console.WriteLine("(Tryck enter för att gå vidare)");
+                    Console.Clear();
                 }
 
 
