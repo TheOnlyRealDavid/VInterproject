@@ -239,7 +239,7 @@ while (avstånd > 0 && hälsa > 0)
         if (bVallet == 2)
         {
         
-            int orcHälsa = 250;
+            int orcHälsa = 100;
             int spelOmgång = 0;
             Console.WriteLine("Du tror att du kan besegra mig- orcen");
             Console.Clear();
@@ -258,7 +258,7 @@ while (avstånd > 0 && hälsa > 0)
                     orcHälsa -= styrka;
                     orcHälsa = Math.Max(0, orcHälsa);
 
-                    int orcSkada = Random.Shared.Next(20, 51);
+                    int orcSkada = Random.Shared.Next(10, 25);
                     Console.WriteLine($"Orchen gjorde {orcSkada} skada");
                     Console.WriteLine($"Ditt försvar gav dig {försvar} liv");
                     hälsa -= orcSkada;
@@ -406,7 +406,7 @@ while (avstånd > 0 && hälsa > 0)
             if(dvValet == 1)
             {
                 int djurSpelomgång = 0;
-                int vargLiv = 250;
+                int vargLiv = 100;
                 Console.WriteLine($"{hjälteNamn}, Vargar är farliga djur lycka till");
                 Console.ReadLine();
                 Console.Clear();
@@ -424,7 +424,7 @@ while (avstånd > 0 && hälsa > 0)
                 vargLiv -= styrka;
                 vargLiv = Math.Max(0, vargLiv);
 
-                int vargSkada = Random.Shared.Next(30, 61);
+                int vargSkada = Random.Shared.Next(10, 20);
                 Console.WriteLine($"Vargen gjorde {vargSkada} på {hjälteNamn}");
                 Console.WriteLine($"Ditt försvar bidrog med {försvar} liv");
                 hälsa -= vargSkada;
